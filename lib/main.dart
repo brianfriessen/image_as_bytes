@@ -3,6 +3,7 @@ import 'dart:convert';
 
 //import 'dart:html';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -75,10 +76,15 @@ class _HomeWidgetState extends State<HomeWidget> {
           Flexible(
               flex: 1,
               child: ConstrainedBox(
-                  constraints: BoxConstraints.tight(const Size(400, 50)), // control the size of the text field
+                  constraints: BoxConstraints.tight(const Size(200, 50)), // control the size of the text field
                   // ..maybe not the right way to do this
                   child: TextField(
                     controller: _myController,
+                    decoration: InputDecoration(
+                      labelText: 'Image URL',
+                      hintText: 'www.someimage.com/image9',
+                     // icon: Icon(Icons.arrow_circle_down)
+                    ),
                   ))),
           Flexible(
               flex: 1,
@@ -94,6 +100,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       flex: 6,
                       //child: SelectableText(snapshot.data),
                       child: SingleChildScrollView(
+                        padding: EdgeInsets.all(20),
                           // without scroll view inside a flexible widget get render errors
                           scrollDirection: Axis.vertical,
                           child: SelectableText(snapshot.data) // need to use selectable text not text widget
